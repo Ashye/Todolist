@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Todo</title>
+
+		<link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.min.css">
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+<!-- 
+		<script src="js/doing.js"></script>
+		<script src="js/Thing.js"></script>  -->
+		<link  type="text/css" rel="stylesheet" href="js/todo.css" />
+
+
+	</head>
+	<body>
+		<div id="pageTodo" data-role="page">
+			<div data-role="header">
+				<a href="#leftPanel" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-bullets ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<h1>Todo</h1>
+				<a href="#" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+			</div>
+
+			<div data-role="content">
+				<div id="setTodo" data-role="collapsibleset" data-theme="a" data-content-theme="a">
+					<div data-role="collapsible">
+						<h1>col1<span class="ui-li-count">2</span></h1>
+						<ul data-role="listview" class="data-icon-left">
+							<li><a href="">item10</a></li>
+							<li><a href="">item11</a></li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h1>col2<span class="ui-li-count">2</span></h1>
+						<ul data-role="listview" class="data-icon-left">
+							<li><a href="">item10</a></li>
+							<li><a href="">item11</a></li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h1>col3<span class="ui-li-count">2</span></h1>
+						<ul data-role="listview" class="data-icon-left">
+							<li><a href="">item10</a></li>
+							<li><a href="">item11</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div id="leftPanel" data-role="panel" data-position="left" data-position-fixed="true" data-display="overlay" >
+				<div>
+					<ul data-role="listview" data-inset="true" data-icon="false">
+						<li data-role="list-divider"><span><strong>Events</strong></span></li>
+						<li><a href="#pageTodo" data-rel="close">Todo</a></li>
+						<li><a href="">Done</a></li>
+						<li><a href="">Quit</a></li>
+						<li data-role="list-divider"><span><strong>System</strong></span></li>
+						<li><a href="">Setting</a></li>
+					</ul>					
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>
