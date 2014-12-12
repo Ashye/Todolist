@@ -11,36 +11,48 @@
 <!-- 
 		<script src="js/doing.js"></script>
 		<script src="js/Thing.js"></script>  -->
-		<link  type="text/css" rel="stylesheet" href="js/todo.css" />
+		<link  type="text/css" rel="stylesheet" href="css/todo.css" />
 
 
 	</head>
 	<body>
 		<div id="pageTodo" data-role="page">
 			<div data-role="header" data-position="fixed" >
-				<a href="#leftPanel" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-bullets ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<a href="#leftPanel" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-bars ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
 				<h1>Todo</h1>
-				<a href="#" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<a href="./incoming.html" rel="external" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
 			</div>
 
 			<div data-role="content">
 				<div id="setTodo" data-role="collapsibleset" data-theme="a" data-content-theme="a">
-					<div data-role="collapsible">
-						<h1>col1<span class="ui-li-count">2</span></h1>
+					<div data-role="collapsible" data-collapsed-icon="clock" data-expanded-icon="clock" class="ui-alt-icon ui-nodisc-icon">
+						<h1>Urgent<span class="ui-li-count">2</span></h1>
+						<ul >
+							<li>
+								<img src="res/img/edit_32.png" alt="Edit">
+								<p style="word-wrap:break-word;">
+									item11aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+								</p>
+							</li>
+							<li class="divider"><hr></li>
+							<li>
+								<img src="res/img/edit_32.png" alt="Edit">
+								<p style="word-wrap:break-word;">
+									item11aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+								</p>
+							</li>
+						</ul>
+
+					</div>
+					<div data-role="collapsible" data-collapsed-icon="alert" data-expanded-icon="alert" class="ui-alt-icon ui-nodisc-icon">
+						<h1>Important<span class="ui-li-count">2</span></h1>
 						<ul data-role="listview" class="data-icon-left">
 							<li><a href="">item10</a></li>
-							<li><a href="">item11</a></li>
+							<li style="word-wrap:break-word;"><a href="" >item11aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></li>
 						</ul>
 					</div>
-					<div data-role="collapsible">
-						<h1>col2<span class="ui-li-count">2</span></h1>
-						<ul data-role="listview" class="data-icon-left">
-							<li><a href="">item10</a></li>
-							<li><a href="">item11</a></li>
-						</ul>
-					</div>
-					<div data-role="collapsible">
-						<h1>col3<span class="ui-li-count">2</span></h1>
+					<div data-role="collapsible" data-collapsed-icon="info" data-expanded-icon="info" class="ui-alt-icon ui-nodisc-icon">
+						<h1>Normal<span class="ui-li-count">2</span></h1>
 						<ul data-role="listview" class="data-icon-left">
 							<li><a href="">item10</a></li>
 							<li><a href="">item11</a></li>
@@ -71,8 +83,8 @@
 					<ul data-role="listview" data-inset="true" data-icon="false">
 						<li data-role="list-divider"><span><strong>Events</strong></span></li>
 						<li><a href="#pageTodo" data-rel="close">Todo</a></li>
-						<li><a href="">Done</a></li>
-						<li><a href="">Quit</a></li>
+						<li><a href="" data-rel="close">Done</a></li>
+						<li><a href="" data-rel="close">Quit</a></li>
 						<li data-role="list-divider"><span><strong>System</strong></span></li>
 						<li><a href="">Setting</a></li>
 					</ul>					
