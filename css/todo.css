@@ -3,13 +3,13 @@
 }
 
 #eventMarks {
-	width: 80%;
-	margin: auto;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-#setTodo ul li {
-	/*margin: -2.5em;*/
-	margin-left: -2.5em;
-	list-style-type: none;
-	/*list-style-image: url("../res/img/edit-small.png")*/
+#setTodo {
+/*	margin-left: -0.6em;
+	margin-right: -0.9em;*/
 }
+
