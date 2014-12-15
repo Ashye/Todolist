@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Wait</title>
+
+		<link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.min.css">
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+			<div id="pageWait" data-role="page">
+			<div data-role="header" data-position="fixed" >
+				<a href="#leftPanel" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-bars ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<h1>Waiting</h1>
+				<a href="./New.html" rel="external" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+			</div>
+
+			<div data-role="content" >
+				<p>this is waiting list </p>
+			</div>
+
+
+					<div id="leftPanel" data-role="panel" data-position="left" data-position-fixed="true" data-display="overlay" >
+			<div>
+				<ul data-role="listview" data-inset="true" data-icon="false">
+					<li data-role="list-divider"><span><strong>Events</strong></span></li>
+					<li><a href="#pageTodo" data-rel="close">Todo</a></li>
+					<li><a href="" data-rel="close">Done</a></li>
+					<li><a href="" data-rel="close">Quit</a></li>
+					<li data-role="list-divider"><span><strong>System</strong></span></li>
+					<li><a href="">Setting</a></li>
+				</ul>					
+			</div>
+
+		</div>
+		</div>
+
+
+</body>
+</html>
