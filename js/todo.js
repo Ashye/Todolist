@@ -1,16 +1,34 @@
-// app init fucntion
+/* App Global Part */
 function init() {
-	// $(document).ready(function() {
-		console.log("ready..............");
-	// 	$("#newEvtDiscard").on("click", discardEvent);
-	// 	$("#newEvtSave").on("click", saveEvent);
-		
-	// });
+
+	console.log("init..............");
+
+	$(document).on("pagecreate", "#pageTodo", function() {
+		debug("page todo on pagecreate");
+		// clearEventsOnlocalStorage();
+		loadTodoEvents();
+
+	});
+	
+	$(document).on("pageshow", "#pageTodo", function() {
+		debug("page todo on pageshow");
+		if(eventsDo && eventsDo.dirty) {
+			debug("need refresh Todo list here....")
+
+
+			eventsDo.dirty = false;
+		}
+	});
 
 	$(document).on("pageshow", "#pageNewEvent", function() {
+		debug("page newevent on pageshow");
 		$("#newEvtDiscard").on("click", discardEvent);
 		$("#newEvtSave").on("click", saveEvent);
+
+		
 	});
+
+
 }
 
 function debug(e) {
@@ -23,8 +41,81 @@ function toast(text) {
 	document.getElementById('toastStart').click();
 	setTimeout(function() {
 		$('#toast').popup('close');
-	}, 1500);
+	}, 2000);
 }
+
+function isArray(o) { 
+	return Object.prototype.toString.call(o) === '[object Array]'; 
+}
+
+
+
+
+/* localStorage */
+// {
+//     "d": [],
+//     "w": [],
+//     "o": [],
+//     "g": []
+//     "System": {}
+// }
+var eventsDo = {
+	dirty: false,
+	list: []
+};
+var eventsWait = {
+	dirty: false,
+	list: []
+};
+var eventDone = {
+	dirty: false,
+	list: []
+};
+var eventGv = {
+	dirty: false,
+	list: []
+};
+
+function addNewThing(thing) {
+	if (thing) {
+		if (!eventsDo.list) {
+			eventsDo.list = [];
+		}
+
+		if (eventsDo.list.length <3) {
+			eventsDo.list.push(thing);
+			eventsDo.dirty = true;
+			debug(eventsDo);
+			// localStorage.setItem("d",JSON.stringify(eventsDo));
+		}else {
+			if (!eventsWait.list) {
+				eventsWait.list = [];
+			}
+			eventsWait.list.push(thing);
+			eventsWait.dirty = true;
+			debug(eventsWait);
+			// localStorage.setItem("w",JSON.stringify(eventsWait));
+		}
+
+	}
+}
+
+function loadTodoEvents() {
+	var things = localStorage.getItem("d");
+	eventsDo.list = JSON.parse(things);
+	eventsDo.dirty = true;
+	debug(eventsDo);
+}
+
+function saveEvents(type) {
+
+
+}
+
+function clearEventsOnlocalStorage() {
+	localStorage.clear();
+}
+
 
 /* Event prototype definition */
 function Thing(text, mark) {
@@ -45,29 +136,49 @@ Thing.prototype = {
 	}
 };
 
+
+
+
+
 /* Todo Page Part */
 
 
 
+
+
 /* New Event Page Part */
-function discardEvent() {
-	debug("don't save new event and exit");
-	toast('this is toast test');
+function discardEvent(event) {
+	// debug("don't save new event and exit");
+	// toast('this is toast test');
+	setTimeout(function() {
+		document.getElementById('formNewEvent').reset();
+	}, 500);
+
+	
 }
 
-function saveEvent() {
+function saveEvent(event) {
 	// debug("save new event and exit");
 	var mark = $('input[name="radio-mark-b"]:checked').val();
 	var text = $('#eventText').val();
 	// debug('mark: '+mark);
 
 	if (!text) {
-		alert("input event content please!!!!!");
+		toast("the Event's content can't been blank!");
 		return;
 	}
 
 	var thing = new Thing();
 	thing.mark = mark;
 	thing.text = text;
-	debug(thing.toString());
+
+	addNewThing(thing);
+	 // var jstr = JSON.stringify(thing);
+	 // debug(typeof(jstr))
+	 // var jsonsdf = JSON.parse(jstr);
+	// debug("eventsDo:"+jsonsdf);
+	setTimeout(function() {
+		document.getElementById('formNewEvent').reset();
+	}, 500);
+	history.back();
 }

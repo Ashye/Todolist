@@ -13,8 +13,12 @@
 
 		<script src="js/todo.js"></script>
 
+		<script type="text/javascript">
+		init();
+		</script>
 	</head>
-	<body onload="init()">
+
+	<body >
 
 
 
@@ -30,10 +34,13 @@
 				<span id="tips">swipe left to see things in queue</span>
 				<div id="setTodo" data-role="collapsibleset" data-theme="a" data-content-theme="a">
 					<div data-role="collapsible" data-collapsed-icon="clock" data-expanded-icon="clock" class="ui-alt-icon ui-nodisc-icon">
-						<h1>Urgent<span class="ui-li-count">2</span></h1>
-						<ol >
-							<li>
-								
+						<h1>Urgent<span class="ui-li-count">0</span></h1>
+						<div id="todoNoItem" data-role="listview">
+							<li data-icon="plus"><a href="#pageNewEvent">New Event</a></li>
+						</div>
+						<ol hidden="hidden">
+<!--						<li>
+ 								
 								<p style="word-wrap:break-word;">
 									item11aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 								</p>
@@ -49,11 +56,11 @@
 								<p style="word-wrap:break-word;">
 									item11aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 								</p>
-								<!-- <img src="res/img/edit_32_1.png" alt="Edit"> -->
+						
 								<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-edit ui-btn-icon-notext ui-alt-icon"></a>
 								<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-check ui-btn-icon-notext ui-alt-icon"></a>
 								<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-delete ui-btn-icon-notext ui-alt-icon"></a>
-							</li>
+							</li> -->
 						</ol>
 
 					</div>
@@ -114,6 +121,7 @@
 				</div>
 
 			<a href="#pageWaitEvent">to wait</a>
+			<a onclick="clearEventsOnlocalStorage()" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all">Clear Events</a>
 
 			</div>
 			
@@ -138,13 +146,13 @@
 		<!-- New Event Page -->
 		<div id="pageNewEvent" data-role="page">
 			<div data-role="header" data-position="fixed" >
-				<a id="newEvtDiscard" href="#" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<a id="newEvtDiscard" data-rel="back" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
 				<h1>New Event</h1>
 				<a id="newEvtSave" href="#"  class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-check ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
 			</div>
 
 			<div data-role="content">
-				<form action="#">
+				<form id="formNewEvent" action="#">
 
 					<fieldset id="eventMarks" data-role="controlgroup" data-type="horizontal" data-mini="true">
 						<legend></legend>
@@ -167,14 +175,14 @@
 					<P></P>
 					<controlgrp>
 						<!-- <label for="eventText"><h2>Event:</h2></label> -->
-						<textarea name="eventText" id="eventText" style="resize:none;" rows="10" maxlength="200" placeholder="事件内容，最多200字符"></textarea>
+						<textarea name="eventText" id="eventText" style="resize:none;" maxlength="500" placeholder="事件内容，最多500字符"></textarea>
 					</controlgrp>
 
 				</form>
 				
 				<a id="toastStart"  href="#toast" data-transition="pop" data-position-to="window" data-rel="popup" hidden="hidden">pop</a>
 				<div id="toast" data-role="popup" >
-					<p>this is a toast test</p>
+					<p>this is a toast message</p>
 				</div>
 
 			</div>			
@@ -186,7 +194,7 @@
 			<div data-role="header" data-position="fixed" >
 				<a href="#pageTodo" data-rel="back" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
 				<h1>Wait Event</h1>
-				<a href="#pageTodo"  class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-check ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<a href="#pageNewEvent" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
 			</div>
 
 			<div data-role="content">
