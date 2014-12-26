@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Todo</title>
+
+	<link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.min.css">
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+
+	<link  type="text/css" rel="stylesheet" href="css/todo.css" />
+	<script src="js/todo.js"></script>
+
+	<script type="text/javascript">init();</script>
+</head>
+
+<body >
+
+<!-- Todo Page -->
+<div id="pageTodo" data-role="page">
+	<div data-role="header" data-position="fixed" >
+		<a href="#leftPanel" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-bars ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+		<h1>TodoList</h1>
+		<a href="#pageNewEvent" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+	</div>
+
+	<div data-role="content">
+		<div id="tabTodo" data-role="tabs">
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a href="#ttodo" data-theme="a" data-ajax="false">进行中(0)</a>
+					</li>
+					<li>
+						<a href="#twait" data-theme="a" data-ajax="false">排队(0)</a>
+					</li>
+				</ul>
+			</div>
+			<div id="ttodo" class="ui-content" >
+				<span id="tips">swipe left to see things in queue</span>
+				<div id="setTodo" data-role="collapsibleset" data-theme="a" data-content-theme="a">
+					<div id="urgent" data-role="collapsible" data-collapsed-icon="clock" data-expanded-icon="clock" class="ui-alt-icon ui-nodisc-icon">
+						<h1>
+							Urgent
+							<span class="ui-li-count">0</span>
+						</h1>
+						<div id="todoNoItem" data-role="listview" >
+							<li data-icon="plus">
+								<a href="#pageNewEvent">New Event</a>
+							</li>
+						</div>
+						<ol id="urgentTodo" hidden="hidden"></ol>
+
+					</div>
+					<div id="important" data-role="collapsible" data-collapsed-icon="alert" data-expanded-icon="alert" class="ui-alt-icon ui-nodisc-icon">
+						<h1>
+							Important
+							<span class="ui-li-count">0</span>
+						</h1>
+						<div id="todoNoItem" data-role="listview" >
+							<li data-icon="plus">
+								<a href="#pageNewEvent">New Event</a>
+							</li>
+						</div>
+						<ol id="importantTodo" hidden="hidden"></ol>
+					</div>
+					<div id="normal" data-role="collapsible" data-collapsed-icon="info" data-expanded-icon="info" class="ui-alt-icon ui-nodisc-icon">
+						<h1>
+							Normal
+							<span class="ui-li-count">0</span>
+						</h1>
+						<div id="todoNoItem" data-role="listview" >
+							<li data-icon="plus">
+								<a href="#pageNewEvent">New Event</a>
+							</li>
+						</div>
+						<ol id="normalTodo" hidden="hidden"></ol>
+					</div>
+				</div>
+
+				<a onclick="clearEventsOnlocalStorage()" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all">Clear Events</a>
+			</div>
+			<div id="twait" class="ui-content">
+				<p>waiting list event</p>
+				<div id="todoNoItem" data-role="listview" data-inset="true">
+					<li data-icon="plus"><a href="#pageNewEvent" >New Event</a></li>
+				</div>
+				<ol id="waitEvent" hidden="hidden" >
+	<!-- 			<li>
+							
+						<p style="word-wrap:break-word;">
+							item11aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+						</p>
+
+						<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-edit ui-btn-icon-notext ui-alt-icon"></a>
+						<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-check ui-btn-icon-notext ui-alt-icon"></a>
+						<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-delete ui-btn-icon-notext ui-alt-icon"></a>
+
+						<hr>
+					</li>
+					<li>
+						
+						<p style="word-wrap:break-word;">
+							item11aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+						</p>
+				
+						<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-edit ui-btn-icon-notext ui-alt-icon"></a>
+						<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-check ui-btn-icon-notext ui-alt-icon"></a>
+						<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-delete ui-btn-icon-notext ui-alt-icon"></a>
+					</li>  -->
+				</ol>
+
+			</div>
+		</div>
+	</div>
+
+	<div id="leftPanel" data-role="panel" data-position="left" data-position-fixed="true" data-display="overlay" >
+		<div>
+			<ul data-role="listview" data-inset="true" data-icon="false">
+				<li data-role="list-divider">
+					<span> <strong>Events</strong>
+					</span>
+				</li>
+				<li>
+					<a href="#pageTodo" data-rel="close">Todo</a>
+				</li>
+				<li>
+					<a href="" data-rel="close">Done</a>
+				</li>
+				<li>
+					<a href="" data-rel="close">Quit</a>
+				</li>
+				<li data-role="list-divider">
+					<span> <strong>System</strong>
+					</span>
+				</li>
+				<li>
+					<a href="">Setting</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+<!-- New Event Page -->
+<div id="pageNewEvent" data-role="page">
+		<div data-role="header" data-position="fixed" >
+			<a id="newEvtDiscard" data-rel="back" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+			<h1>New Event</h1>
+			<a id="newEvtSave" href="#"  class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-check ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+		</div>
+
+		<div data-role="content">
+			<form id="formNewEvent" action="#">
+
+				<fieldset id="eventMarks" data-role="controlgroup" data-type="horizontal" data-mini="true">
+					<legend></legend>
+					<span class="mark"  data-icon="info" >
+						<input type="radio" id="markRadio1" name="radio-mark-b" value="N" checked="checked">
+						<label for="markRadio1">
+							<img src="css/lib/images/icons-svg/info-black.svg" alt="" >Normal</label>
+						<!-- <a href="#" data-role="button" data-icon="info">normal</a>
+					-->
+					</span>
+					<span class="mark">
+						<input type="radio" id="markRadio2" name="radio-mark-b" value="I">
+						<label for="markRadio2">
+							<img src="css/lib/images/icons-svg/alert-black.svg" alt="" >Impor</label>
+					</span>
+					<span class="mark">
+						<input type="radio" id="markRadio3" name="radio-mark-b" value="U">
+						<label for="markRadio3">
+							<img src="css/lib/images/icons-svg/clock-black.svg" alt="" >Urgent</label>
+					</span>
+				</fieldset>
+				<P></P>
+			<controlgrp>
+				<label for="eventText" label-acc>
+					<h2>Event:</h2>
+				</label>
+				
+				<textarea name="eventText" id="eventText" style="resize:none;" maxlength="500" placeholder="事件内容，最多500字符"></textarea>
+			</controlgrp>
+
+		</form>
+
+		<a id="toastStart"  href="#toast" data-transition="pop" data-position-to="window" data-rel="popup" hidden="hidden">pop</a>
+		<div id="toast" data-role="popup" >
+			<p>this is a toast message</p>
+		</div>
+	</div>
+</div>
+
+<!-- Waiting Page -->
+<!-- <div id="pageWaitEvent" data-role="page">
+	<div data-role="header" data-position="fixed" >
+		<a href="#pageTodo" data-rel="back" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+		<h1>Wait Event</h1>
+		<a href="#pageNewEvent" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+	</div>
+
+	<div data-role="content">
+		<p>waiting list event</p>
+		<div data-role="listview"></div>
+	</div>
+</div> -->
+
+</body>
+</html>

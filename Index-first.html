@@ -10,7 +10,7 @@
 		<script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
 
 		<link  type="text/css" rel="stylesheet" href="css/todo.css" />
-		<script src="js/todo.js"></script>
+		<script src="js/todo-first.js"></script>
 
 		<script type="text/javascript">
 		init();
@@ -126,22 +126,11 @@
 				</div>
 
 			<!-- 	<a href="#pageWaitEvent">to wait</a> -->
-				<a onclick="clearEventsOnlocalStorage()" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all">Clear Events</a>
+				<a onclick="clearEventsOnlocalStorage()" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all" >Clear Events</a>
+				<a id="awaitPage" href="#pageWaitEvent" hidden data-transition="fade">go waits</a>
 
 			</div>
-			
-			<div id="pageTodoFooter" data-role="footer" data-position="fixed">
-				<div data-role="navbar">
-					<ul>
-						<li>
-							<a href="#pageTodo" >进入中()</a>
-						</li>
-						<li>
-							<a href="#pageWaitEvent" >排队()</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+
 
 			<div id="leftPanel" data-role="panel" data-position="left" data-position-fixed="true" data-display="overlay" >
 				<div>
@@ -152,7 +141,7 @@
 						<li><a href="" data-rel="close">Quit</a></li>
 						<li data-role="list-divider"><span><strong>System</strong></span></li>
 						<li><a href="">Setting</a></li>
-					</ul>					
+					</ul>
 				</div>
 			</div>
 
@@ -207,31 +196,74 @@
 		</div>
 
 
+
+
 		<!-- Waiting Page -->
 		<div id="pageWaitEvent" data-role="page">
 			<div data-role="header" data-position="fixed" >
 				<a href="#pageTodo" data-rel="back" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
-				<h1>Wait Event</h1>
+				<h1>Wait</h1>
 				<a href="#pageNewEvent" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
 			</div>
 
 			<div data-role="content">
-				<p>waiting list event</p>
-			</div>	
+				<a id="atodoPage" href="#pageTodo" hidden data-transition="fade">go todo</a>
+				<span>waiting list event</span>
+				<div id="itemListWait">
+					<div id="todoNoItem" class="item-event ui-corner-all">
+						<span>还没有事件，点击新事件...</span>
+					</div>
+<!-- 					<div id="todoNoItem" class="item-event-active ui-corner-all">
+						<span>按下效果</span>
+					</div> -->
+					<a href="#pageNewEvent" hidden></a>
 
-			<div id="pageWaitFooter" data-role="footer" data-position="fixed">
-				<div data-role="navbar">
-					<ul>
-						<li>
-							<a href="#pageTodo" >进入中()</a>
-						</li>
-						<li>
-							<a href="#pageWaitEvent" >排队()</a>
-						</li>
-					</ul>
+<!-- 					<div class="item-event ui-corner-all"><span>1. aaaa dddddddf fffffffff sssssssss aaaaaaaa vvvvvvvv bbbbbbbbbbbb sssssssssss ffffffffff aaaaaaaaaa</span></div>
+					<div class="item-event ui-corner-all"><span>2. aaaa dddddddf fffffffff sssssssss aaaaaaaa vvvvvvvv bbbbbbbbbbbb sssssssssss ffffffffff aaaaaaaaaa</span></div> -->
 				</div>
 			</div>
 
 		</div>
+
+
+
+
+		<!-- Done Page -->
+		<div id="pageDoneEvent" data-role="page">
+			<div data-role="header" data-position="fixed" >
+				<a href="#pageTodo" data-rel="back" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<h1>Done</h1>
+				<a href="#pageNewEvent" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+			</div>
+
+			<div data-role="content">
+				<p>Done list event</p>
+				<a id="atodoPage" href="#pageTodo" hidden data-transition="fade">go todo</a>
+			</div>	
+
+		</div>
+
+
+
+
+
+		<!-- Quit Page -->
+		<div id="pageQuitEvent" data-role="page">
+			<div data-role="header" data-position="fixed" >
+				<a href="#pageTodo" data-rel="back" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<h1>Quit</h1>
+				<a href="#pageNewEvent" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+			</div>
+
+			<div data-role="content">
+				<p>quit list event</p>
+				<a id="atodoPage" href="#pageTodo" hidden data-transition="fade">go todo</a>
+			</div>	
+
+
+
+
+		</div>
+
 	</body>
 </html>

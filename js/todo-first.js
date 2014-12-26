@@ -5,12 +5,33 @@ function init() {
 
 	console.log("init..............");
 
-	$(document).on("pageinit", "#pageTodo", function() {
+	$(document).on("pageinit", "#pageTodo", function(event) {
 		debug("page todo on pageinit");
-		eventsDo = new EventList('d');
-		eventsWait = new EventList('w')
+		if (!eventsDo) {
+			eventsDo = new EventList('d');
+		}
 
-		$('#tabTodo a').eq(0).click();
+		if (!eventsWait) {
+			eventsWait = new EventList('w');
+		}
+
+
+
+		$(document).on("click", "#pageTodo", function(event){
+			// debug("sssssssssssssssssssssssssss click");
+		});
+
+		$(document).on("click", "#pageWaitEvent", function(event){
+			// debug("sssssssssssssssssssssssssss click");
+		});
+
+		$(document).on("swipeleft", "#pageTodo", function(event){
+			// debug("sssssssssssssssssssssssssss wipe left");
+			$('#awaitPage').eq(0).click();
+
+			return true;
+		});
+
 		eventsDo.loadFromLocal();
 
 
@@ -26,13 +47,48 @@ function init() {
 
 
 
-
-
 	$(document).on("pageinit", "#pageNewEvent", function() {
 		debug("page newevent on pageinit");
 		$("#newEvtDiscard").on("click", discardEvent);
 		$("#newEvtSave").on("click", saveEvent);
+
+
 	});
+
+
+	$(document).on("pageinit", "#pageWaitEvent", function(){
+		debug("page WaitEvent on pageinit");
+		if (!eventsWait) {
+			eventsWait = new EventList('w');
+		}
+
+
+		$("#itemListWait>#todoNoItem").on("click", function(event){
+			// $("#itemListWait>a").eq(0).click();
+			debug("click");
+
+		}); 
+		$("#itemListWait>#todoNoItem").on("mousedown touchstart", function(event){
+			debug("down");
+			$("#itemListWait>#todoNoItem").removeClass('item-event');
+			$("#itemListWait>#todoNoItem").addClass('item-event-active');
+
+		}); 
+		$("#itemListWait>#todoNoItem").on("mouseup touchend", function(event){
+			// $("#itemListWait>a").eq(0).click();
+			debug("up");
+			$("#itemListWait>#todoNoItem").removeClass('item-event-active');
+			$("#itemListWait>#todoNoItem").addClass('item-event');
+		}); 
+
+		$(document).on("swiperight", "#pageWaitEvent", function(event){
+			// debug("sssssssssssssssssssssssssss wipe right");
+			$('#atodoPage').eq(0).click();
+
+			return true;
+		});
+	})
+
 
 }
 
@@ -185,8 +241,8 @@ EventList.prototype = {
 function refreshTodoPageUI() {
 
 	//update navbar
-	$('#tabTodo ul li a').first().text('进行中('+eventsDo.length()+')');
-	$('#tabTodo ul li a').last().text('排队('+eventsWait.length()+')');
+	// $('#tabTodo ul li a').first().text('进行中('+eventsDo.length()+')');
+	// $('#tabTodo ul li a').last().text('排队('+eventsWait.length()+')');
 
 
 	//update events by event's mark
@@ -287,8 +343,12 @@ function refreshWaitPageUI() {
 
 }
 
-function waitEventsHtmlAppend() {
-	
+function itemEventHtmlAppend(thing) {
+	var tag_div = document.createElement("div");
+	tag_div.innerHTML = "<div class='item-event ui-corner-all'><span>"+thing.text
+						+"</span></div>";
+
+	return tag_div;
 }
 
 function todoEventsHtmlAppend(thing) {
@@ -300,19 +360,6 @@ function todoEventsHtmlAppend(thing) {
 	tag_li.innerHTML = innerHtml;
 	return tag_li; 
 }
-
-// <li>
-	
-// 	<p style="word-wrap:break-word;">
-// 		item11aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-// 	</p>
-
-// 	<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-edit ui-btn-icon-notext ui-alt-icon"></a>
-// 	<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-check ui-btn-icon-notext ui-alt-icon"></a>
-// 	<a href="#" class="ui-btn ui-btn-shdown ui-btn-inline ui-mini ui-corner-all ui-icon-delete ui-btn-icon-notext ui-alt-icon"></a>
-
-// 	<hr>
-// </li>
 
 
 

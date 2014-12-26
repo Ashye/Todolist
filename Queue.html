@@ -12,31 +12,29 @@
 <body>
 			<div id="pageWait" data-role="page">
 			<div data-role="header" data-position="fixed" >
-				<a href="#leftPanel" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-bars ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<a href="#" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-bars ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
 				<h1>Waiting</h1>
-				<a href="./New.html" rel="external" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<a href="#" rel="external" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+			</div>
+
+			<div data-role="content" >
+				<p>this is waiting list </p>
+				<a href="#page2" data-transition="slide">slide page2</a>
+			</div>
+		</div>
+
+
+			<div id="page2" data-role="page">
+			<div data-role="header" data-position="fixed" >
+				<a href="#" class="ui-btn-left ui-btn ui-btn-shadow ui-btn-inline ui-mini ui-corner-all ui-icon-bars ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
+				<h1>Waiting</h1>
+				<a href="#" rel="external" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-plus ui-btn-icon-notext ui-nodisc-icon ui-alt-icon"></a>
 			</div>
 
 			<div data-role="content" >
 				<p>this is waiting list </p>
 			</div>
-
-
-					<div id="leftPanel" data-role="panel" data-position="left" data-position-fixed="true" data-display="overlay" >
-			<div>
-				<ul data-role="listview" data-inset="true" data-icon="false">
-					<li data-role="list-divider"><span><strong>Events</strong></span></li>
-					<li><a href="#pageTodo" data-rel="close">Todo</a></li>
-					<li><a href="" data-rel="close">Done</a></li>
-					<li><a href="" data-rel="close">Quit</a></li>
-					<li data-role="list-divider"><span><strong>System</strong></span></li>
-					<li><a href="">Setting</a></li>
-				</ul>					
-			</div>
-
 		</div>
-		</div>
-
 
 </body>
 </html>
